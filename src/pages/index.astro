@@ -1,0 +1,36 @@
+---
+import Layout from "../layouts/Layout.astro"
+---
+
+<Layout title='Katina Wilson • Hair Sylist'>
+	<main>
+		<div class="sr-only">
+			<h1>Katrina Wilson</h1>
+			<h2>Hair Stylist</h2>
+			<p>Book your appointment by calling 336-398-4608</p>
+		</div>
+		<img
+			src='/kw-info.png'
+			width='800'
+			height='800'
+			alt='Katina Wilson business card'
+		/>
+	</main>
+</Layout>
+
+<style>
+	main {
+		display: grid;
+		place-content: center;
+		height: 100vh;
+		width: 100%;
+		margin-inline: auto;
+	}
+	img {
+		height: 100%;
+		width: 100%;
+		object-fit: contain;
+		max-height: 90vh;
+		width: min(90vw, 600px);
+	}
+</style>
