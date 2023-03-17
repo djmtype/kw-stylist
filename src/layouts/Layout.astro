@@ -1,18 +1,50 @@
 ---
+import "@fontsource/gantari"
+
+import { siteMeta } from "../site.config"
+
 export interface Props {
-	title: string;
+	title: string
+	description: string
+	image?: string
+	path?: any
 }
 
-const { title } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site)
+
+const {
+	title,
+	description,
+	image = siteMeta.image,
+	path = Astro.url.pathname,
+} = Astro.props
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
+		<meta charset='UTF-8' />
+		<meta name='viewport' content='width=device-width' />
+		<link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+		<meta name='generator' content={Astro.generator} />
+		<meta name='title' content={title} />
+		<meta name='description' content={description} />
+		<link rel='canonical' href={canonicalURL} />
+
+		<!-- Open Graph / Facebook -->
+		<meta property='og:type' content='website' />
+		<meta property='og:url' content={Astro.url} />
+		<meta property='og:title' content={title} />
+		<meta property='og:description' content={description} />
+		<meta property='og:image' content={new URL(image, Astro.url)} />
+
+		<!-- Twitter -->
+		<meta property='twitter:card' content='summary_large_image' />
+		<meta property='twitter:url' content={Astro.url} />
+		<meta property='twitter:title' content={title} />
+		<meta property='twitter:description' content={description} />
+		<meta property='twitter:image' content={new URL(image, Astro.url)} />
+
 		<title>{title}</title>
 	</head>
 	<body>
@@ -20,117 +52,34 @@ const { title } = Astro.props;
 	</body>
 </html>
 <style is:global>
+	@import "../style/reset.css";
 
-
-*,
-*::before,
-*::after {
-	box-sizing: border-box;
-}
-
-body {
-	font-family: system-ui, sans-serif;
-}
-
-:where(body, h1, h2, h3, h4, h5, h6, p, figure, blockquote, dl, dd) {
-	margin: 0;
-}
-
-:where(ul, ol, hr, pre) {
-	margin-block: 0;
-}
-
-ul[role="list"],
-ol[role="list"] {
-	list-style: none;
-}
-
-:where(ul[role="list"], ol[role="list"]) {
-	padding: 0;
-	margin: 0;
-}
-
-html:focus-within {
-	scroll-behavior: smooth;
-}
-
-html,
-body {
-	height: 100%;
-}
-body {
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	min-height: 100vh;
-	/* text-rendering: optimizeSpeed; */
-}
-
-img,
-picture,
-video,
-canvas,
-svg {
-	display: block;
-	max-width: 100%;
-}
-
-img {
-	height: auto;
-}
-
-input,
-button,
-textarea,
-select {
-	font: inherit;
-}
-
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	overflow-wrap: break-word;
-}
-
-details {
-	cursor: pointer;
-}
-
-@media (prefers-reduced-motion: reduce) {
-	html:focus-within {
-		scroll-behavior: auto;
+	:root {
+		--logo: currentColor;
 	}
-	*,
-	*::before,
-	*::after {
-		animation-duration: 0.01ms !important;
-		animation-iteration-count: 1 !important;
-		transition-duration: 0.01ms !important;
-		scroll-behavior: auto !important;
-	}
-}
-
-
 
 	html {
-		font-family: system-ui, sans-serif;
-		background-color: #F0E9E1;
-		color: #312C2D;
+		background-color: #f0e9e1;
 	}
 
 	.sr-only {
-  position: absolute;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  margin: 0;
-  padding: 0;
-  width: 1px;
-  height: auto;
-  border: 0;
-  white-space: nowrap;
-}
+		position: absolute;
+		overflow: hidden;
+		clip: rect(0 0 0 0);
+		margin: 0;
+		padding: 0;
+		width: 1px;
+		height: auto;
+		border: 0;
+		white-space: nowrap;
+	}
 
+	a {
+		color: currentColor;
+		text-decoration: none;
+	}
+
+	a:hover, a:focus-visible {
+		color: hsl(180 40% 40%);
+	}
 </style>
