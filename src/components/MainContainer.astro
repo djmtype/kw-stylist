@@ -1,13 +1,13 @@
 ---
-import { Image, Picture } from '@astrojs/image/components';
+import { Image } from 'astro:assets';
 import Logo from "../components/Logo.astro"
-import butterfly from '../assets/butterfly.png'
+import butterfly from '@/assets/butterfly.png'
 ---
 
 <div class='main-container'>
 	<div class='hero'>
 		<span class='label-1'>Since</span>
-		<Image src={butterfly} width={800} aspectRatio={1200/790} alt="butterfly illustration" quality={60} format="webp" loading="eager" decoding="sync" fetchpriority="high" />
+		<Image src={butterfly} width={butterfly.width/2} height={butterfly.height/2} alt="butterfly illustration" quality="high" format="webp" loading="eager" />
 
 		<span class='label-2'>2023</span>
 	</div>
