@@ -1,0 +1,79 @@
+---
+import { siteMeta } from "@/site.config";
+
+
+// Group business hours by open/close times
+// Define types for business hours data
+type BusinessHour = {
+  day: string;
+  opens: string;
+  closes: string;
+}
+
+type HourGroup = {
+  opens: string;
+  closes: string;
+  dayOfWeek: string[];
+}
+
+type GroupedHoursAccumulator = {
+  [key: string]: HourGroup;
+}
+
+const groupedHours = (siteMeta.businessHours as BusinessHour[]).reduce(
+  (acc: GroupedHoursAccumulator, hour: BusinessHour) => {
+    const key = `${hour.opens}-${hour.closes}`;
+    if (!acc[key]) {
+      acc[key] = {
+        opens: hour.opens,
+        closes: hour.closes,
+        dayOfWeek: [],
+      };
+    }
+    acc[key].dayOfWeek.push(hour.day);
+    return acc;
+  },
+  {} as GroupedHoursAccumulator
+);
+
+const openingHoursSpecification = Object.values(groupedHours).map((group: HourGroup) => {
+  const { dayOfWeek, ...rest } = group;
+  const finalDayOfWeek = dayOfWeek.length === 1 ? dayOfWeek[0] : dayOfWeek;
+
+  return {
+    "@type": "OpeningHoursSpecification" as const,
+    ...rest,
+    dayOfWeek: finalDayOfWeek,
+  };
+});
+
+
+
+const imagePath = (new URL(Astro.url.pathname, Astro.site).toString()) + siteMeta.image
+
+const schema = {
+    "@context": "https://schema.org",
+    "@type": "HairSalon",
+    "name": siteMeta.title,
+    "description": siteMeta.description,
+    "url": siteMeta.url,
+    "image": imagePath,
+    "telephone": siteMeta.phone,
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": siteMeta.location.address,
+      "addressLocality": siteMeta.location.city,
+      "addressRegion": siteMeta.location.state,
+      "postalCode": siteMeta.location.zip,
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": siteMeta.coordinates.latitude,
+      "longitude": siteMeta.coordinates.longitude
+    },
+    "openingHoursSpecification": openingHoursSpecification,
+    "sameAs": siteMeta.social.map(item => item.url)
+  }
+---
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

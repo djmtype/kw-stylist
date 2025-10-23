@@ -1,0 +1,7 @@
+:where(.flow > * + *) {
+ margin-block-start: var(--_flow-space, var(--spacing-size-flow));
+}
+
+.block-flow > * + * {
+ margin-block-start: var(--_block-space, var(--spacing-size-xl-2xl));
+}

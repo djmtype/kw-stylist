@@ -1,10 +1,144 @@
 ---
+import { siteMeta } from "@/site.config"
+import { Image } from 'astro:assets';
+import type { SvgComponent } from "astro/types";
 import Layout from "../layouts/Layout.astro"
-import MainContainer from "../components/MainContainer.astro"
+import brandSymbol from '@/assets/brand-symbol.png'
+import IconInstagram from "@/components/Icons/instagram.svg"
+import IconFacebook from "@/components/Icons/facebook.svg"
+import IconHeart from "@/components/Icons/heart.svg"
+import ProductsTitle from '@/components/ProductsTitle.svg'
+type Link = {
+  url: string
+  label: string
+  icon: SvgComponent
+}
+
+const socialIcons = {
+	Facebook: IconFacebook,
+	Instagram: IconInstagram,
+};
+
+const links: Link[] = siteMeta.social.map(social => ({
+	url: social.url,
+	label: social.network,
+	icon: socialIcons[social.network as keyof typeof socialIcons]
+}));
 ---
 
-<Layout title="Katina Wilson • Hair Sylist" description="Katina Wilson, a hair stylist from the Myrtle Beach, South Carolina region">
-	<MainContainer />
+<Layout title="Myrtle Beach Hair Stylist – Katina Wilson" description="Myrtle Beach Hair Stylist, Katina Wilson">
+
+
+	<div class="wrapper [&>*+*]:mt-size-xs">
+		<div class="logo">
+			<p class="text-step-1"><span>Since</span> <span>2023</span></p>
+			<Image src={brandSymbol} width={brandSymbol.width/2} height={brandSymbol.height/2} densities={[1,2]} alt="butterfly illustration" quality="med" format="webp" loading="eager" />
+		</div>
+		<div class="text-center [&>*+*]:mt-size-2xs">
+			<h1 class="font-sans-heading font-normal  text-step-6">Katina Wilson @ The Suite</h1>
+			<h2 class="font-normal text-step-4 mt-size-2xs">Stylist</h2>
+		</div>
+	</div>
+
+	<div class="wrapper mt-size-xl">
+		<div class="flex flex-wrap gap-size-flow">
+			
+			<div class="col mx-auto">
+			<p class="text-center leading-[1.1]">
+				<a class="text-step-3 no-underline" href="+1-843-357-3177">843.357.3177</a>
+			</p>
+				<p class="text-step-1 text-center">Murrells Inlet, SC</p>
+		
+
+			{links && 
+			<ul role="list" class="flex gap-size-3xs justify-center mt-size-sm">
+			{links.map((i) => (
+				<li>
+		<a class="inline-flex" href={i.url} target="_blank" rel="noopener noreferrer">
+		<span class="sr-only">Visit Katina Wilson on {i.label}</span>
+				<i.icon class="text-step-6" width="1em" height="1em" />
+			</a>
+		</li>
+		))}
+			</ul>
+			}
+			</div>
+
+			<div class="col mx-auto">
+				<div class="flex gap-size-xs">
+					<IconHeart class="text-step-6 text-primary" width="1em" height="1em" />
+					<ul role="list" class="[&_li]:tracking-widest">
+							<li>Certified Color Expert</li>
+							<li>Certified Brazilian Blowout</li>
+							<li>Cuts and Styling</li>
+							<li>Brow and Lash Tinting</li>
+							<li>Blowouts</li>
+							<li>Thinning Solutions</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+
+
+	<section class="mt-size-xl-2xl py-size-xl-2xl bg-light shadow-range-xl shadow-dark/3">
+		<div class="wrapper">
+			<h2 class="text-center font-sans-heading tracking-wide text-step-4">Why It Matters Where You Buy Your Products</h2>
+
+			<div class="mt-size-md-lg flex gap-size-gutter flex-wrap justify-center items-center max-sm:grid max-sm:grid-stack">
+
+				<div class="col sm:flex-1 sm:order-2">
+					<h2>
+						<span class="sr-only">Products</span>
+					<ProductsTitle class="-rotate-20 w-[450px] max-w-full mx-auto max-sm:opacity-15" aria-hidden="true" />
+					</h2>
+				</div>
+
+
+				<div class="col sm:flex-1 flow [&_p]:max-w-[70ch] relative z-1">
+						<p>Professional products are carefully formulated with active ingredients that have a “shelf life”—a window of time when they are most active, balanced, and perform best.</p>
+						<p>When you purchase through The Suite, you’re cutting out the middleman and ensuring your products haven’t spent months on warehouse shelves or in uncertain conditions.</p>
+						<p>Fresh, professional, and effective—just as they were designed to be.</p>
+				</div>
+				
+			</div>
+		
+		</div>
+	</section>
 </Layout>
 
+
+<style>
+	.logo {
+		inline-size: min(370px, 100%);
+		margin-inline: auto;
+		display: grid;
+		grid-template-columns: auto minmax(50%, 230px) auto;
+		align-items: center;
+	}
+
+	.logo img {
+ grid-column: 1/-1;
+	grid-row: 1;
+	justify-self: center;
+	position: relative;
+	z-index: -1;
+	}
+
+	.logo p {
+		display: contents;
+	}
+
+		.logo p > span:first-child {
+		grid-column: 1;
+		grid-row: 1;
+		justify-self: end;
+	}
+
+	.logo p > span:last-child {
+		grid-column: 3;
+		grid-row: 1;
+	}
+</style>
 

@@ -1,0 +1,163 @@
+@theme {
+  --default-*: initial;
+  --text-*: initial;
+  /* --font-size-*: initial; */
+  /* --font-family-*: initial; */
+  /* --color-*: initial; */
+  --color-red-*: initial;
+  --color-yellow-*: initial;
+
+  --color-orange-*: initial;
+  --color-amber-*: initial;
+  --color-lime-*: initial;
+  /* --color-green-*: initial; */
+  --color-emerald-*: initial;
+  --color-teal-*: initial;
+  --color-cyan-*: initial;
+  --color-sky-*: initial;
+  --color-blue-*: initial;
+  --color-indigo-*: initial;
+  --color-violet-*: initial;
+  --color-purple-*: initial;
+  --color-fuchsia-*: initial;
+  --color-pink-*: initial;
+  --color-rose-*: initial;
+  /* --color-slate-*: initial; */
+  --color-gray-*: initial;
+  --color-zinc-*: initial;
+  --color-neutral-*: initial;
+  --color-stone-*: initial;
+
+  /* --radius-*: initial; */
+  --blur-*: initial;
+  /* --animate-*: initial; */
+  /* --shadow-*: initial; */
+  --drop-shadow-*: initial;
+  --inset-shadow-*: initial;
+  --width-*: initial;
+  --letter-spacing-*: initial;
+  /* --line-height-*: initial; */
+  --perspective-*: initial;
+  /* --spacing-size-*: initial; */
+  /* --transition-*: initial; */
+  /* --breakpoint-*: initial; */
+
+  /* Use semantic colors over primitive colors where applicable */
+
+  /* Primitive Colors */
+
+  --color-black: oklch(0 0 0);
+  --color-white: oklch(1 0 0);
+
+  --color-beige: oklch(0.94 0.01 71.33);
+
+  --color-teal-light: oklch(0.76 0.09 186.98);
+  --color-teal-dark: oklch(0.55 0.09 186.98);
+
+
+
+  --color-brown: oklch(0.43 0.08 46.62);
+
+  /* Semantic Colors */
+
+  --color-light: var(--color-beige);
+  --color-dark: var(--color-black);
+
+  /* --color-brand-red: var(--color-red-600);
+
+  --color-brand-yellow: var(--color-yellow-500); */
+  --color-primary: var(--color-teal-light);
+
+  --color-primary-surface: var(--color-teal-light);
+  --color-primary-ink: var(--color-teal-dark);
+
+
+
+  --color-secondary: var(--color-brown);
+
+
+  --color-link: var(--color-primary-ink);
+
+  --color-link-hover: color-mix(in oklch, var(--color-primary), var(--color-dark) 10%);
+  
+  --color-link-active: var(--color-dark);
+
+  --font-sans-brand: "Open Sans Variable", var(--font-sans);
+  --font-sans-heading: "Italiana", var(--font-sans);
+
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+
+/* @link https://utopia.fyi/type/calculator?c=364,16,1.2,1332,18,1.25,6,1,&s=0.75|0.5|0.25,1.5|2|3|4|5|6,s-l&g=s,l,2xl,12 */
+
+
+  --text-step--1: clamp(0.8333rem, 0.8083rem + 0.1102vw, 0.9rem);
+  --text-step-0: clamp(1rem, 0.953rem + 0.2066vw, 1.125rem);
+  --text-step-1: clamp(1.2rem, 1.1224rem + 0.3409vw, 1.4063rem);
+  --text-step-2: clamp(1.44rem, 1.3205rem + 0.5253vw, 1.7578rem);
+  --text-step-3: clamp(1.728rem, 1.5515rem + 0.7756vw, 2.1973rem);
+  --text-step-4: clamp(2.0736rem, 1.8205rem + 1.1124vw, 2.7466rem);
+  --text-step-5: clamp(2.4883rem, 2.133rem + 1.5618vw, 3.4332rem);
+  --text-step-6: clamp(2.986rem, 2.4951rem + 2.1579vw, 4.2915rem);
+
+
+  /* @link https://utopia.fyi/space/calculator?c=364,16,1.2,1332,18,1.25,6,1,&s=0.75|0.5|0.25,1.5|2|3|4|5|6,s-l&g=s,l,2xl,12 */
+
+
+  --spacing-size-3xs: clamp(0.25rem, 0.2265rem + 0.1033vw, 0.3125rem);
+  --spacing-size-2xs: clamp(0.5rem, 0.4765rem + 0.1033vw, 0.5625rem);
+  --spacing-size-xs: clamp(0.75rem, 0.703rem + 0.2066vw, 0.875rem);
+  --spacing-size-sm: clamp(1rem, 0.953rem + 0.2066vw, 1.125rem);
+  --spacing-size-md: clamp(1.5rem, 1.4295rem + 0.3099vw, 1.6875rem);
+  --spacing-size-lg: clamp(2rem, 1.906rem + 0.4132vw, 2.25rem);
+  --spacing-size-xl: clamp(3rem, 2.859rem + 0.6198vw, 3.375rem);
+  --spacing-size-2xl: clamp(4rem, 3.812rem + 0.8264vw, 4.5rem);
+  --spacing-size-3xl: clamp(5rem, 4.765rem + 1.0331vw, 5.625rem);
+  --spacing-size-4xl: clamp(6rem, 5.718rem + 1.2397vw, 6.75rem);
+
+  /* One-up pairs */
+  --spacing-size-3xs-2xs: clamp(0.25rem, 0.1325rem + 0.5165vw, 0.5625rem);
+  --spacing-size-2xs-xs: clamp(0.5rem, 0.359rem + 0.6198vw, 0.875rem);
+  --spacing-size-xs-sm: clamp(0.75rem, 0.609rem + 0.6198vw, 1.125rem);
+  --spacing-size-sm-md: clamp(1rem, 0.7415rem + 1.1364vw, 1.6875rem);
+  --spacing-size-md-lg: clamp(1.5rem, 1.218rem + 1.2397vw, 2.25rem);
+  --spacing-size-lg-xl: clamp(2rem, 1.483rem + 2.2727vw, 3.375rem);
+  --spacing-size-xl-2xl: clamp(3rem, 2.436rem + 2.4793vw, 4.5rem);
+  --spacing-size-2xl-3xl: clamp(4rem, 3.3889rem + 2.686vw, 5.625rem);
+  --spacing-size-3xl-4xl: clamp(5rem, 4.3419rem + 2.8926vw, 6.75rem);
+
+  /* Custom pairs */
+  --spacing-size-sm-lg: clamp(1rem, 0.53rem + 2.0661vw, 2.25rem);
+
+
+  /* Alias */
+
+  --spacing-size-gutter: var(--spacing-size-sm-lg);
+  --spacing-size-flow: 1.5rlh;
+
+  --border-width-hairline: 1px;
+  --border-width-separator: 2px;
+  --border-width-focus: 0.09375rem;
+  --border-width-underline: 0.05em;
+
+  --border-width-frame: 1rem;
+
+  /* --radius-xs: 0.02em;
+  --radius-sm: 0.3125rem;
+  --radius-md: 0.625rem; */
+  --radius-square: 0;
+  --radius-circle: 1e5px;
+  --radius-corner-md: min(1.5cqi, 16px);
+  --radius-corner-lg: min(3cqi, 32px);
+  --radius-corner-xl: min(6cqi, 64px);
+
+  --shadow-range-xs: 0.25em 0.25em 0 var(--tw-shadow-alpha);
+
+  --shadow-range-xl: 0 -0.5em .5em var(--tw-shadow-alpha);
+
+  --icon-size: 1em;
+
+  --icon-chevron-down: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 6L8 10L12 6' stroke='currentColor' opacity='.8' stroke-width='1.5' stroke-linecap='round' vector-effect='non-scaling-stroke'  stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+
+
+}

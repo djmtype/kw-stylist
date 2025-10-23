@@ -1,0 +1,152 @@
+:root {
+  interpolate-size: allow-keywords;
+}
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Prevent font size inflation */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+/* Remove default margin in favor of better control in authored CSS */
+
+:where(body) {
+  margin: 0;
+}
+
+:where(h1, h2, h3, h4, h5, p, figure, blockquote, dl, dd, hr, pre, ul, ol) {
+  margin-block-end: 0;
+}
+
+/* Default line-height for typography elements */
+:where(body, h1, h2, h3, h4, h5, p, li, dt, dd) {
+  line-height: calc(1em + 0.5rem);
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100svh;
+  /* -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; */
+  font-family: system-ui, sans-serif;
+}
+
+/* Balance text wrapping on headings */
+:where(h1, h2, h3, h4, h5) {
+  text-wrap: balance;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ul[role='listbox'],
+ol[role='list'] {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+/* A elements that don't have a class get default styles */
+:where(a:not([class])) {
+  color: inherit;
+}
+
+/* Add clear actions */
+:where(button, input[type='submit']) {
+  cursor: pointer;
+}
+
+:disabled {
+  cursor: not-allowed;
+}
+
+/* Make media elements easier to work with */
+:where(img, svg, video, canvas, audio, iframe, embed, object) {
+  max-width: 100%;
+  display: block;
+}
+
+/* Maintain aspect ratio when max-width is applied */
+:where(img,
+svg,
+video,
+canvas) {
+  height: auto;
+}
+
+/* Prevent improper layout expected behavior */
+
+:where(picture) {
+  display: contents;
+}
+:where(source) {
+  display: none;
+}
+
+/* Removes spacing between cells in tables */
+:where(table) {
+  border-collapse: collapse;
+}
+
+/* Inherit fonts for inputs and buttons */
+:where(input,
+button,
+textarea,
+select) {
+  font: inherit;
+}
+
+/* Fix placeholder text accessibility */
+::placeholder {
+  color: currentColor;
+}
+
+/* Add uniformity to browsers */
+:where(hr) {
+  border-style: solid;
+  border-width: 1px 0 0;
+  color: inherit;
+  height: 0;
+  overflow: visible;
+}
+
+/* Prevent overflow by default */
+:where(pre) {
+  white-space: pre-wrap;
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 1rlh;
+}
+
+/* Add smooth scrolling animation */
+/* @media (prefers-reduced-motion: no-preference) {
+  html:focus-within {
+    scroll-behavior: smooth;
+  }
+} */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

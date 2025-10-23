@@ -1,5 +1,12 @@
 ---
-import '@fontsource-variable/gantari';
+// Supports weights 100-900
+// import '@fontsource-variable/gantari'
+// Supports weights 300-800
+import Schema from "@/components/Schema.astro"
+import '@fontsource-variable/open-sans'
+import '@fontsource/italiana'
+
+import "@/style/main.css"
 
 import { siteMeta } from "../site.config"
 
@@ -25,9 +32,17 @@ const {
 	<head>
 		<meta charset='UTF-8' />
 		<meta name='viewport' content='width=device-width' />
-		<link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+
+		<link rel="icon" href="/favicons/favicon.ico" sizes="32x32">
+<link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+<link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png">
+
+
+
+		
+		<title>{title}</title>
+		<Schema />
 		<meta name='generator' content={Astro.generator} />
-		<meta name='title' content={title} />
 		<meta name='description' content={description} />
 		<link rel='canonical' href={canonicalURL} />
 
@@ -45,41 +60,19 @@ const {
 		<meta property='twitter:description' content={description} />
 		<meta property='twitter:image' content={new URL(image, Astro.url)} />
 
-		<title>{title}</title>
+		
+		<link rel="sitemap" href="/sitemap-index.xml" />
 	</head>
 	<body>
 		<slot />
 	</body>
 </html>
 <style is:global>
-	@import "../style/reset.css";
+	
 
 	:root {
 		--logo: currentColor;
 	}
 
-	html {
-		background-color: #f0e9e1;
-	}
 
-	.sr-only {
-		position: absolute;
-		overflow: hidden;
-		clip: rect(0 0 0 0);
-		margin: 0;
-		padding: 0;
-		width: 1px;
-		height: auto;
-		border: 0;
-		white-space: nowrap;
-	}
-
-	a {
-		color: currentColor;
-		text-decoration: none;
-	}
-
-	a:hover, a:focus-visible {
-		color: hsl(180 40% 40%);
-	}
 </style>

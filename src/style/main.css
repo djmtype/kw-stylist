@@ -1,0 +1,16 @@
+@layer vendor, reset, theme, base, components, page, utilities;
+
+/* @import "tailwindcss"; */
+@import "tailwindcss/theme.css" layer(theme);
+
+@import "./theme/tokens.css" layer(theme);
+
+@import "./base/reset.css" layer(base);
+@import "./base/global.css" layer(base);
+
+
+@import "tailwindcss/utilities.css" layer(utilities);
+
+@import "./utilities/wrapper.css";
+@import "./utilities/grid-stack.css";
+@import "./utilities/flow.css" layer(utilities);

@@ -1,0 +1,109 @@
+html {
+ scrollbar-gutter: stable;
+ background-color: var(--color-light);
+}
+
+body {
+ color: var(--color-dark);
+font-size: var(--text-step-0);
+font-family: var(--font-sans-brand);
+font-weight: var(--font-weight-normal);
+display: flex;
+flex-direction: column;
+padding-block: var(--spacing-size-gutter);
+}
+
+body:has(dialog[open]) {
+overflow: clip;
+
+}
+
+:where(figure, blockquote, dt, dd) {
+ margin-inline: 0;
+}
+
+:where(h1, h2, h3, h4, h5, p, figure, blockquote, dl, dd, hr, pre, ul, ol) {
+ margin-block-start: 0;
+}
+
+:where(p, li, dt, dd, h5) {
+  line-height: 1.5;
+}
+
+
+:where(ul, ol):is([role="list"]) {
+ padding-inline-start: 0;
+}
+
+
+:where(h1) {
+ font-size: var(--text-step-5);
+}
+
+:where(h2) {
+ font-size: var(--text-step-3);
+}
+
+:where(h3) {
+ font-size: var(--text-step-2);
+}
+
+:where(h4) {
+ font-size: var(--text-step-1);
+}
+
+:where(h5) {
+ font-size: var(--text-step-0);
+}
+
+:where(h1, h2, h3):not([class]) {
+ font-family: var(--font-sans-brand);
+}
+
+:where(p, li, dt, dd) {
+ text-wrap: pretty;
+}
+
+:focus-visible {
+ --_outline-size: var(--border-width-focus);
+ --_outline-style: solid;
+ --_outline-color: currentColor;
+ --_outline-offset: calc(var(--_outline-size) * 2);
+}
+
+:where(:focus-visible) {
+ outline: var(--_outline-size) var(--_outline-style) var(--_outline-color);
+ outline-offset: var(--_outline-offset, var(--_outline-size));
+ border-radius: var(--radius-xs);
+ transition: outline-offset 150ms;
+}
+
+:where(a) {
+ text-underline-offset: 0.1em;
+ color: var(--color-link);
+ text-decoration-thickness: var(--border-width-underline);
+ transition-property: background, color, outline, outline-offset;
+ transition-duration: 150ms;
+ transition-timing-function: linear;
+ &:hover,
+ &:focus-visible {
+   text-decoration: none;
+   color: var(--color-link-hover);
+ }
+ &:active {
+   color: var(--color-link-active);
+ }
+}
+
+:where(hr) {
+ border-block-start: var(--border-width-separator) solid var(--color-slate-200);
+}
+
+
+
+/* html {
+scrollbar-color: var(--color-dark) var(--color-slate-100);
+  scrollbar-width: medium;
+} */
+
+

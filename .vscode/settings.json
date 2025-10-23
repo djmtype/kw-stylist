@@ -1,0 +1,8 @@
+{
+  "tailwindCSS.experimental.configFile": "src/style/main.css",
+  "search.exclude": {
+    "**/dist": true,
+    "**/_backup": true,
+    "**/node_modules": true,
+  }
+}
