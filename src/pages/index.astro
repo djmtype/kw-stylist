@@ -103,8 +103,16 @@ const links: Link[] = siteMeta.social.map(social => ({
 				</div>
 				
 			</div>
-		
+
+
+			<p class="mx-auto mt-size-xl-2xl text-center">
+				<a class="btn" href="https://cp.salonhq.co/katina-wilson" target="_blank" rel="noopener noreferrer">
+					Explore Our Lines &rarr;
+				</a>
+			</p>
 		</div>
+
+			
 	</section>
 </Layout>
 
@@ -140,5 +148,29 @@ const links: Link[] = siteMeta.social.map(social => ({
 		grid-column: 3;
 		grid-row: 1;
 	}
+
+	.btn {
+		--_outline-color: var(--color-link-hover);
+	transition: all 150ms ease;
+	text-transform: uppercase;
+	background-color: var(--color-link);
+	letter-spacing: .02em;
+	color: var(--color-white);
+	text-decoration: none;
+	border-radius: 1e5px;
+	font-size: 1.25rem;
+	font-weight: 600;
+	padding: 1rlh 2rlh;
+	text-align: center;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	&:hover, &:focus-visible {
+		background-color: var(--color-link-hover);
+	}
+	&:active {
+		background-color: var(--color-link-active);
+	}
+}
 </style>
 
