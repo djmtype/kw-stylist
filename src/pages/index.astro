@@ -26,7 +26,7 @@ const links: Link[] = siteMeta.social.map(social => ({
 }));
 ---
 
-<Layout title="Murrells Inlet Hair Stylist – Katina Wilson" description="Murrells Inlet Hair Stylist, Katina Wilson">
+<Layout title={siteMeta.title} description={siteMeta.description}>
 
 
 	<div class="wrapper [&>*+*]:mt-size-xs">
@@ -45,7 +45,7 @@ const links: Link[] = siteMeta.social.map(social => ({
 			
 			<div class="col mx-auto">
 			<p class="text-center leading-[1.1]">
-				<a class="text-step-3 no-underline" href="+1-843-357-3177">843.357.3177</a>
+				<a class="text-step-3 no-underline" href="+1-843-357-3177"><span class="sr-only">Contact Katina Wilson at </span>843.357.3177</a>
 			</p>
 				<p class="text-step-1 text-center">Murrells Inlet, SC</p>
 		
@@ -98,7 +98,7 @@ const links: Link[] = siteMeta.social.map(social => ({
 
 				<div class="col sm:flex-1 flow [&_p]:max-w-[70ch] relative z-1">
 						<p>Professional products are carefully formulated with active ingredients that have a “shelf life”—a window of time when they are most active, balanced, and perform best.</p>
-						<p>When you purchase through The Suite, you’re cutting out the middleman and ensuring your products haven’t spent months on warehouse shelves or in uncertain conditions.</p>
+						<p>When you purchase through <a href="https://cp.salonhq.co/katina-wilson" target="_blank" rel="noopener noreferrer">The Suite</a>, you’re cutting out the middleman and ensuring your products haven’t spent months on warehouse shelves or in uncertain conditions.</p>
 						<p>Fresh, professional, and effective—just as they were designed to be.</p>
 				</div>
 				

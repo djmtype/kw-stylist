@@ -1,5 +1,5 @@
 export const siteMeta = {
-  title: "Katina Wilson • Hair Stylist",
+  title: "Katina Wilson @ The Suite • Stylist • Murrells Inlet",
   description: "When you need a hair stylist in the Grand Strand, SC area, call Katina Wilson at 843-357-3177",
   url: "https://thesuite-hair.com/",
   image: "og-image.png",
