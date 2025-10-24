@@ -1,0 +1,55 @@
+---
+import { Image } from "astro:assets"
+import brandSymbol from "@/assets/brand-symbol.png"
+---
+
+<header class="pt-size-md-lg">
+    <div class="wrapper [&>*+*]:mt-size-xs">
+      <div class="logo">
+        <p class="text-step-1"><span>Since</span> <span>2023</span></p>
+        <Image
+          src={brandSymbol}
+          width={brandSymbol.width / 2}
+          height={brandSymbol.height / 2}
+          densities={[1, 2]}
+          alt="butterfly illustration"
+          quality="med"
+          format="webp"
+          loading="eager"
+        />
+      </div>
+    </div>
+  </header>
+
+<style>
+ .logo {
+    inline-size: min(370px, 100%);
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: auto minmax(50%, 230px) auto;
+    align-items: center;
+  }
+
+  .logo img {
+    grid-column: 1/-1;
+    grid-row: 1;
+    justify-self: center;
+    position: relative;
+    z-index: -1;
+  }
+
+  .logo p {
+    display: contents;
+  }
+
+  .logo p > span:first-child {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: end;
+  }
+
+  .logo p > span:last-child {
+    grid-column: 3;
+    grid-row: 1;
+  }
+</style>
